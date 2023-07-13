@@ -8,6 +8,14 @@
       "runtimeExecutable": "yarn",
       "skipFiles": ["<node_internals>/**"],
       "type": "node"
+    },
+    {
+      "name": "debug test",
+      "request": "launch",
+      "runtimeArgs": ["test"],
+      "runtimeExecutable": "yarn",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
     }
   ]
 }
