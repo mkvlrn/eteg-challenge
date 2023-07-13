@@ -1,0 +1,10 @@
+{
+  "extends": "@mkvlrn/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "#/backend/*": ["backend/*"],
+      "#/frontend/*": ["frontend/*"]
+    }
+  }
+}
