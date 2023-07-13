@@ -4,7 +4,7 @@ import { FastifySchema } from 'fastify';
 import { z } from 'zod';
 
 const createUserBody = z.object({
-  name: z
+  nome: z
     .string({ required_error: '"nome" é campo obrigatório' })
     .nonempty('"nome" é campo obrigatório')
     .min(3, '"nome" deve ter no mínimo 3 caracteres')

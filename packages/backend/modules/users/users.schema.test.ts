@@ -3,7 +3,7 @@ import { AnyZodObject } from 'zod';
 import { createUserSchema } from '#/backend/modules/users/users.schema.js';
 
 const validInput = {
-  name: 'Anna Júlia',
+  nome: 'Anna Júlia',
   cpf: '99867390040',
   email: 'anna@email.com',
   corFavorita: 'VERMELHO',
@@ -16,9 +16,9 @@ test('parses user successfully', async () => {
   expect(result.success).toBeTruthy();
 });
 
-test('parse fails when name is missing from body', async () => {
+test('parse fails when nome is missing from body', async () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { name, ...invalidInput } = validInput;
+  const { nome, ...invalidInput } = validInput;
 
   const result = await (createUserSchema.body as AnyZodObject).safeParseAsync(invalidInput);
 
@@ -27,8 +27,8 @@ test('parse fails when name is missing from body', async () => {
   expect(result.error.issues[0].message).toBe('"nome" é campo obrigatório');
 });
 
-test('parse fails when name is empty', async () => {
-  const invalidInput = { ...validInput, name: '' };
+test('parse fails when nome is empty', async () => {
+  const invalidInput = { ...validInput, nome: '' };
 
   const result = await (createUserSchema.body as AnyZodObject).safeParseAsync(invalidInput);
 
@@ -37,8 +37,8 @@ test('parse fails when name is empty', async () => {
   expect(result.error.issues[0].message).toBe('"nome" é campo obrigatório');
 });
 
-test('parse fails when name is too short', async () => {
-  const invalidInput = { ...validInput, name: 'a' };
+test('parse fails when nome is too short', async () => {
+  const invalidInput = { ...validInput, nome: 'a' };
 
   const result = await (createUserSchema.body as AnyZodObject).safeParseAsync(invalidInput);
 
@@ -47,8 +47,8 @@ test('parse fails when name is too short', async () => {
   expect(result.error.issues[0].message).toBe('"nome" deve ter no mínimo 3 caracteres');
 });
 
-test('parse fails when name is too long', async () => {
-  const invalidInput = { ...validInput, name: ''.padEnd(256, 'a') };
+test('parse fails when nome is too long', async () => {
+  const invalidInput = { ...validInput, nome: ''.padEnd(256, 'a') };
 
   const result = await (createUserSchema.body as AnyZodObject).safeParseAsync(invalidInput);
 

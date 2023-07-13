@@ -18,10 +18,10 @@ enum RainboColor {
 }
 
 model User {
-  id            String      @id @default(uuid())
-  name          String
-  cpf           String      @unique
-  email         String      @unique
-  favoriteColor RainboColor
-  observations  String?
+  id          String      @id @default(uuid())
+  nome        String
+  cpf         String      @unique
+  email       String      @unique
+  corFavorita RainboColor
+  obs         String?
 }
