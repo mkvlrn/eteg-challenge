@@ -8,7 +8,7 @@ test('routes are registered', async () => {
 
   await router(mockFastify);
 
-  expect(mockFastify.route).toHaveBeenCalledTimes(2);
+  expect(mockFastify.route).toHaveBeenCalledTimes(3);
 });
 
 test('catch-all route throws ResourceNotFound', async () => {
