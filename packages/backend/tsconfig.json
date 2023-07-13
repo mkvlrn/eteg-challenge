@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../../build/backend",
+    "noEmit": false
+  },
+  "include": ["**/*"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx"]
+}
