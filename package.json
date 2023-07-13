@@ -11,15 +11,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn tsc -p tsconfig.build.json",
-    "postbuild": "yarn tsc-alias -p tsconfig.build.json",
+    "dev": "yarn turbo dev",
+    "build": "yarn turbo build",
     "check-types": "yarn tsc-files",
-    "dev": "yarn tsx watch --ignore **/*.test.ts src/index.ts",
     "format": "yarn prettier --write",
     "lint": "yarn eslint --fix",
-    "prebuild": "yarn rimraf build",
     "prepare": "yarn husky install",
-    "start": "node build",
     "test-cov": "rimraf coverage && yarn vitest run --coverage",
     "test-staged": "yarn vitest related --run",
     "test": "yarn vitest --run"
@@ -67,7 +64,10 @@
     },
     "extends": [
       "@mkvlrn"
-    ]
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": "off"
+    }
   },
   "prettier": "@mkvlrn/prettier-config",
   "lint-staged": {
