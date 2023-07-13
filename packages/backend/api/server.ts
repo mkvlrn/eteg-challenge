@@ -1,5 +1,6 @@
 import fastify, { FastifyInstance } from 'fastify';
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from 'fastify-type-provider-zod';
+import { router } from '#/backend/api/router.js';
 
 export async function getServer(): Promise<FastifyInstance> {
   const { NODE_ENV } = process.env;
@@ -12,7 +13,8 @@ export async function getServer(): Promise<FastifyInstance> {
   server
     .setValidatorCompiler(validatorCompiler)
     .setSerializerCompiler(serializerCompiler)
-    .withTypeProvider<ZodTypeProvider>();
+    .withTypeProvider<ZodTypeProvider>()
+    .register(router);
 
   return server;
 }
