@@ -79,7 +79,7 @@
   "prettier": "@mkvlrn/prettier-config",
   "lint-staged": {
     "*.(ts|tsx)": [
-      "yarn check-types packages/backend/types/environment.d.ts",
+      "yarn check-types packages/backend/types/environment.d.ts packages/frontend/types/modules.d.ts",
       "yarn lint",
       "yarn format",
       "yarn test-staged"
