@@ -19,7 +19,12 @@ const createUserBody = z.object({
     .nonempty('email é campo obrigatório')
     .max(255, 'email deve ter no máximo 255 caracteres')
     .email('email inválido'),
-  corFavorita: z.nativeEnum(RainboColor),
+  corFavorita: z.nativeEnum(RainboColor, {
+    errorMap: () => ({
+      message:
+        'corFavorita deve ser uma das seguintes: VERMELHO, LARANJA, AMARELO, VERDE, AZUL, ANIL, VIOLETA',
+    }),
+  }),
   obs: z.string().max(255, 'obs deve ter no máximo 255 caracteres').optional(),
 });
 
