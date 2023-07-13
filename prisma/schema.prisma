@@ -8,13 +8,13 @@ datasource db {
 }
 
 enum RainboColor {
-  RED
-  ORANGE
-  YELLOW
-  GREEN
-  BLUE
-  INDIGO
-  VIOLET
+  VERMELHO
+  LARANJA
+  AMARELO
+  VERDE
+  AZUL
+  ANIL
+  VIOLETA
 }
 
 model User {
