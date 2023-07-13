@@ -10,7 +10,7 @@ export function errorHandler(error: Error, _request: FastifyRequest, reply: Fast
       message: error.errors.map((issue) => issue.message.replaceAll('"', "'")),
     });
   } else {
-    const customError = error as FastifyError & { error?: string };
+    const customError = error as FastifyError;
 
     reply.status(customError.statusCode ?? 500).send({
       statusCode: customError.statusCode ?? 500,

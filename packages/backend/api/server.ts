@@ -1,5 +1,6 @@
 import fastify, { FastifyInstance } from 'fastify';
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from 'fastify-type-provider-zod';
+import { errorHandler } from '#/backend/api/error-handler.js';
 import { router } from '#/backend/api/router.js';
 
 export async function getServer(): Promise<FastifyInstance> {
@@ -14,6 +15,7 @@ export async function getServer(): Promise<FastifyInstance> {
     .setValidatorCompiler(validatorCompiler)
     .setSerializerCompiler(serializerCompiler)
     .withTypeProvider<ZodTypeProvider>()
+    .setErrorHandler(errorHandler)
     .register(router);
 
   return server;
