@@ -53,6 +53,15 @@ test('throws error if cpf already exists', async () => {
 });
 
 test('throws error if prisma throws error', async () => {
+  vi.spyOn(prisma.user, 'findUnique').mockRejectedValue(new Error('prisma error'));
+
+  const { nome, email, cpf, corFavorita, obs } = validInput;
+  const act = () => createUserService(nome, email, cpf, corFavorita, obs);
+
+  await expect(act).rejects.toThrow(InternalServerError);
+});
+
+test('throws error if error is not from prisma', async () => {
   vi.spyOn(prisma.user, 'findUnique').mockRejectedValue(new Error('Test Error'));
 
   const { nome, email, cpf, corFavorita, obs } = validInput;
