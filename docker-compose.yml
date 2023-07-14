@@ -1,7 +1,20 @@
 name: mkvlrn-eteg-challenge
 
 services:
-  postgres:
+  postgres-dev:
+    image: postgres
+    ports:
+      - 5555:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: _eteg_challenge
+    volumes:
+      - dev-data:/var/lib/postgresql/data
+    profiles:
+      - dev
+
+  postgres-prod:
     image: postgres
     expose:
       - 5432
@@ -10,21 +23,26 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: _eteg_challenge
     volumes:
-      - data:/var/lib/postgresql/data
+      - prod-data:/var/lib/postgresql/data
+    profiles:
+      - prod
 
   api:
     image: mkvlrn/eteg-challenge
     depends_on:
-      - postgres
+      - postgres-prod
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - 4000:4000
     environment:
-      DATABASE_URL: postgres://root:root@postgres:5432/_eteg_challenge
+      DATABASE_URL: 'postgres://root:root@postgres-prod:5432/_eteg_challenge'
       PORT: 4000
       NODE_ENV: production
+    profiles:
+      - prod
 
 volumes:
-  data:
+  dev-data:
+  prod-data:
