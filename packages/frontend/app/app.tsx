@@ -69,7 +69,7 @@ export function App() {
             >
               Depoimentos
             </Button>
-            <Anchor href='https://github.com/mkvlrn' target='_blank'>
+            <Anchor href='https://github.com/mkvlrn/eteg-challenge' target='_blank'>
               <Button
                 variant='default'
                 radius='xl'
