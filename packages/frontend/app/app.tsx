@@ -53,7 +53,7 @@ export function App() {
               rightIcon={<IconVideo />}
               onClick={open}
             >
-              Testemunhos
+              Depoimentos
             </Button>
             <Anchor href='https://github.com/mkvlrn' target='_blank'>
               <Button

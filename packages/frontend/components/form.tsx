@@ -9,12 +9,34 @@ import {
   Textarea,
   TextInput,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { FormValues, useJoeForm } from '#/frontend/components/form-state.js';
 
 export function UserForm() {
   const { form, colors } = useJoeForm();
 
-  const handleSubmit = async (values: FormValues) => {
+  function setErrors(messages: string[]) {
+    const nomeError = messages.find((message) => message.startsWith('nome'));
+    const emailError = messages.find((message) => message.startsWith('email'));
+    const cpfError = messages.find((message) => message.startsWith('cpf'));
+    const corFavoritaError = messages.find((message) => message.startsWith('corFavorita'));
+    const obsError = messages.find((message) => message.startsWith('obs'));
+
+    if (nomeError) form.setFieldError('nome', nomeError);
+    if (emailError) form.setFieldError('email', emailError);
+    if (cpfError) form.setFieldError('cpf', cpfError);
+    if (corFavoritaError) form.setFieldError('corFavorita', corFavoritaError);
+    if (obsError) form.setFieldError('obs', obsError);
+
+    if (messages.length > 0)
+      notifications.show({
+        title: 'Erro de validação no formulário (VALIDATION_ERROR)',
+        message: 'Corrija os campos indicados e tente novamente.',
+        color: 'red',
+      });
+  }
+
+  async function handleSubmit(values: FormValues) {
     const response = await fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -24,24 +46,22 @@ export function UserForm() {
     const data: { statusCode: number; code: string; message: string | string[] } =
       await response.json();
     if (response.ok) {
-      console.log(data);
+      notifications.show({
+        title: 'Cadastro realizado com sucesso!',
+        message: 'Em breve entraremos em contato com mais informações.',
+        color: 'green',
+      });
+      form.reset();
     } else if (data.code === 'VALIDATION_ERROR') {
-      const { message } = data as { message: string[] };
-      const nomeError = message.find((message_) => message_.startsWith('nome'));
-      const emailError = message.find((message_) => message_.startsWith('email'));
-      const cpfError = message.find((message_) => message_.startsWith('cpf'));
-      const corFavoritaError = message.find((message_) => message_.startsWith('corFavorita'));
-      const obsError = message.find((message_) => message_.startsWith('obs'));
-
-      if (nomeError) form.setFieldError('nome', nomeError);
-      if (emailError) form.setFieldError('email', emailError);
-      if (cpfError) form.setFieldError('cpf', cpfError);
-      if (corFavoritaError) form.setFieldError('corFavorita', corFavoritaError);
-      if (obsError) form.setFieldError('obs', obsError);
+      setErrors(data.message as string[]);
     } else {
-      console.error(data);
+      notifications.show({
+        title: `Erro ao enviar formulário (${data.code}))`,
+        message: data.message as string,
+        color: 'red',
+      });
     }
-  };
+  }
 
   return (
     <Container w='60rem'>
