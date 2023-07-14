@@ -28,6 +28,11 @@ export function useJoeForm() {
       corFavorita: '#e81416',
       obs: '',
     },
+
+    transformValues: (values) => ({
+      ...values,
+      corFavorita: colors[values.corFavorita],
+    }),
   });
 
   return { form, colors };
