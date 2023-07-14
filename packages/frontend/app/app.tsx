@@ -2,6 +2,7 @@ import { Anchor, Button, Container, Group, List, rem, Text, ThemeIcon, Title } f
 import { useDisclosure } from '@mantine/hooks';
 import { IconCheck, IconExternalLink, IconVideo } from '@tabler/icons-react';
 import { useStyles } from '#/frontend/app/app.style.js';
+import { UserForm } from '#/frontend/components/form.jsx';
 import { TestimonyModal } from '#/frontend/components/testimony-modal.jsx';
 
 export function App() {
@@ -67,7 +68,7 @@ export function App() {
             </Anchor>
           </Group>
         </div>
-        <div>form here</div>
+        <UserForm />
       </div>
       <TestimonyModal opened={opened} close={close} />
     </Container>

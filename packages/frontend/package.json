@@ -9,6 +9,7 @@
     "@mantine/core": "^6.0.16",
     "@mantine/form": "^6.0.16",
     "@mantine/hooks": "^6.0.16",
+    "@prisma/client": "^5.0.0",
     "@tabler/icons-react": "^2.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
