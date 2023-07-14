@@ -1,4 +1,15 @@
-import { Anchor, Button, Container, Group, List, rem, Text, ThemeIcon, Title } from '@mantine/core';
+import {
+  Anchor,
+  Button,
+  Center,
+  Container,
+  Group,
+  List,
+  rem,
+  Text,
+  ThemeIcon,
+  Title,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconCheck, IconExternalLink, IconVideo } from '@tabler/icons-react';
 import { useStyles } from '#/frontend/app/app.style.js';
@@ -11,6 +22,11 @@ export function App() {
 
   return (
     <Container>
+      <Center>
+        <Text mt='3rem' weight='900' style={{ fontSize: rem(80) }}>
+          John Doe&apos;s Secret
+        </Text>
+      </Center>
       <div className={classes.inner}>
         <div className={classes.content}>
           <Title className={classes.title}>
@@ -20,7 +36,6 @@ export function App() {
             Cadastre-se para ser um dos primeiros a ter acesso ao produto digital definitivo. Nada
             vai ser como antes. A mudança de paradigmas, mentes e corações está chegando.
           </Text>
-
           <List
             mt={30}
             spacing='sm'
@@ -44,7 +59,6 @@ export function App() {
               em boa companhia.
             </List.Item>
           </List>
-
           <Group mt={30}>
             <Button
               radius='xl'
