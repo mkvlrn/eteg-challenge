@@ -1,4 +1,4 @@
-import { RainboColor } from '@prisma/client';
+import { Color } from '@prisma/client';
 import { expect, test, vi } from 'vitest';
 import {
   CpfAlreadyRegistered,
@@ -12,7 +12,7 @@ const validInput = {
   nome: 'Bruce Wayne',
   email: 'batman@email.com',
   cpf: '99867390040',
-  corFavorita: RainboColor.ANIL,
+  corFavorita: Color.ANIL,
   obs: 'Não é fã da luz do dia',
 };
 

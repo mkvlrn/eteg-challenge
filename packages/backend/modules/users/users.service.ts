@@ -1,4 +1,4 @@
-import { RainboColor } from '@prisma/client';
+import { Color } from '@prisma/client';
 import {
   CpfAlreadyRegistered,
   EmailAlreadyRegistered,
@@ -10,7 +10,7 @@ export async function createUserService(
   nome: string,
   email: string,
   cpf: string,
-  corFavorita: RainboColor,
+  corFavorita: Color,
   obs?: string,
 ) {
   try {

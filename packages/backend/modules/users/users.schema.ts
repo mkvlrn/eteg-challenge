@@ -1,4 +1,4 @@
-import { RainboColor } from '@prisma/client';
+import { Color } from '@prisma/client';
 import { cpf } from 'cpf-cnpj-validator';
 import { FastifySchema } from 'fastify';
 import { z } from 'zod';
@@ -19,7 +19,7 @@ const createUserBody = z.object({
     .nonempty('email é campo obrigatório')
     .max(255, 'email deve ter no máximo 255 caracteres')
     .email('email inválido'),
-  corFavorita: z.nativeEnum(RainboColor, {
+  corFavorita: z.nativeEnum(Color, {
     errorMap: () => ({
       message:
         'corFavorita deve ser uma das seguintes: VERMELHO, LARANJA, AMARELO, VERDE, AZUL, ANIL, VIOLETA',
