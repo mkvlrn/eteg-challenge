@@ -23,7 +23,7 @@ export function App() {
   return (
     <Container>
       <Center>
-        <Text mt='3rem' weight='900' style={{ fontSize: rem(80) }}>
+        <Text role='heading' mt='3rem' weight='900' style={{ fontSize: rem(80) }}>
           John Doe&apos;s Secret
         </Text>
       </Center>

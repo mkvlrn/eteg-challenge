@@ -6,12 +6,7 @@ export default defineConfig({
   // @ts-expect-error, because of esm
   plugins: [react()],
   base: '',
-  resolve: {
-    alias: {
-      '#/backend': resolve('.', './packages/backend'),
-      '#/frontend': resolve('.', '../../packages/frontend'),
-    },
-  },
+  resolve: { alias: { '#/frontend': resolve('.', '../../packages/frontend') } },
   server: {
     port: 3000,
     open: true,
@@ -27,12 +22,16 @@ export default defineConfig({
     emptyOutDir: true,
   },
   test: {
+    alias: {
+      '#/backend': resolve('.', './packages/backend'),
+      '#/frontend': resolve('.', './packages/frontend'),
+    },
     coverage: {
       reportsDirectory: 'coverage',
       reporter: ['lcov', 'html', 'text'],
       all: true,
       include: ['packages/**/*'],
-      exclude: ['packages/*/index.ts', 'packages/**/*.d.ts'],
+      exclude: ['packages/*/index.ts', 'packages/*/index.tsx', 'packages/**/*.d.ts'],
     },
     env: {
       NODE_ENV: 'test',

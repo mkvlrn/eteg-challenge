@@ -17,7 +17,7 @@ export function UserForm() {
   return (
     <Container w='60rem'>
       <Paper withBorder shadow='md' p={25} radius='md'>
-        <form onSubmit={form.onSubmit(submitForm)}>
+        <form name='user-form' aria-label='user-form' onSubmit={form.onSubmit(submitForm)}>
           <Stack spacing='xl'>
             <TextInput
               label='Nome completo'
@@ -69,12 +69,7 @@ export function UserForm() {
                 Cadastrar
               </Text>
             </Button>
-            <Button
-              type='reset'
-              color='gray'
-              onClick={form.reset}
-              disabled={!form.isDirty() || loading}
-            >
+            <Button type='reset' color='gray' onClick={form.reset} disabled={loading}>
               Limpar
             </Button>
           </Group>
