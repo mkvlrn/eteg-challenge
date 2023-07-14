@@ -5,6 +5,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   // @ts-expect-error, because of esm
   plugins: [react()],
+  base: '',
   resolve: {
     alias: {
       '#/backend': resolve('.', './packages/backend'),
