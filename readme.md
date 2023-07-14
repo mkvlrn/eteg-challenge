@@ -88,7 +88,7 @@ instruções:
 
 ## validando cpf
 
-o validador de cpf usa o algorítmo de validação [wikipedia](https://pt.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas#Algoritmo) oficial, então CPFs válidos precisam ser inseridos. aqui vão alguns exemplos:
+o validador de cpf usa o [algorítmo de validação que o governo usa](https://pt.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas#Algoritmo), então CPFs válidos precisam ser inseridos. aqui vão alguns exemplos:
 
 | CPF         |
 | ----------- |
