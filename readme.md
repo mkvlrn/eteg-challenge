@@ -6,6 +6,8 @@
 
 ### live
 
+<https://mkvlrn-eteg-challenge.up.railway.app/>
+
 ### localhost via docker compose (simula production)
 
 requisitos:
