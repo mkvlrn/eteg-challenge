@@ -99,3 +99,5 @@ o validador de cpf usa o algorítmo de validação [wikipedia](https://pt.wikipe
 | 30665729006 |
 | 24174131082 |
 | 40219855064 |
+
+outros podem ser gerados em <https://www.geradordecpf.org/>
