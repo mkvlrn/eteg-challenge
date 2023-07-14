@@ -1,9 +1,12 @@
 import { Anchor, Button, Container, Group, List, rem, Text, ThemeIcon, Title } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { IconCheck, IconExternalLink, IconVideo } from '@tabler/icons-react';
 import { useStyles } from '#/frontend/app/app.style.js';
+import { TestimonyModal } from '#/frontend/components/testimony-modal.jsx';
 
 export function App() {
   const { classes } = useStyles();
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <Container>
@@ -42,7 +45,13 @@ export function App() {
           </List>
 
           <Group mt={30}>
-            <Button radius='xl' size='md' className={classes.control} rightIcon={<IconVideo />}>
+            <Button
+              radius='xl'
+              size='md'
+              className={classes.control}
+              rightIcon={<IconVideo />}
+              onClick={open}
+            >
               Testemunhos
             </Button>
             <Anchor href='https://github.com/mkvlrn' target='_blank'>
@@ -60,6 +69,7 @@ export function App() {
         </div>
         <div>form here</div>
       </div>
+      <TestimonyModal opened={opened} close={close} />
     </Container>
   );
 }
