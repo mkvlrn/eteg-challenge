@@ -1,0 +1,30 @@
+name: mkvlrn-eteg-challenge
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: _eteg_challenge
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  api:
+    image: mkvlrn/eteg-challenge
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      DATABASE_URL: postgres://root:root@postgres:5432/_eteg_challenge
+      PORT: 4000
+      NODE_ENV: production
+
+volumes:
+  data:

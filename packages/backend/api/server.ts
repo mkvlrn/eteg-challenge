@@ -22,7 +22,7 @@ export async function getServer(): Promise<FastifyInstance> {
 
   if (isProduction) {
     server.register(fastifyStatic, {
-      root: resolve('.', 'build/frontend'),
+      root: resolve('.', 'packages/frontend'),
     });
   }
 
