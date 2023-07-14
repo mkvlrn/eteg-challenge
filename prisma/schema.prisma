@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum RainboColor {
+enum Color {
   VERMELHO
   LARANJA
   AMARELO
@@ -18,10 +18,10 @@ enum RainboColor {
 }
 
 model User {
-  id          String      @id @default(uuid())
+  id          String  @id @default(uuid())
   nome        String
-  cpf         String      @unique
-  email       String      @unique
-  corFavorita RainboColor
+  cpf         String  @unique
+  email       String  @unique
+  corFavorita Color
   obs         String?
 }
