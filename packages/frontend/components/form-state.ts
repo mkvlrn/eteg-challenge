@@ -1,14 +1,15 @@
 import { useForm } from '@mantine/form';
-import { Color } from '@prisma/client';
+
+type Color = 'VERMELHO' | 'LARANJA' | 'AMARELO' | 'VERDE' | 'AZUL' | 'ANIL' | 'VIOLETA';
 
 const colors: { [key: string]: Color } = {
-  '#e81416': Color.VERMELHO,
-  '#ffa500': Color.LARANJA,
-  '#faeb36': Color.AMARELO,
-  '#79c314': Color.VERDE,
-  '#487de7': Color.AZUL,
-  '#4b369d': Color.ANIL,
-  '#70369d': Color.VIOLETA,
+  '#e81416': 'VERMELHO',
+  '#ffa500': 'LARANJA',
+  '#faeb36': 'AMARELO',
+  '#79c314': 'VERDE',
+  '#487de7': 'AZUL',
+  '#4b369d': 'ANIL',
+  '#70369d': 'VIOLETA',
 };
 
 export interface FormValues {
