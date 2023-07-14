@@ -26,6 +26,9 @@ export async function createUserService(
   } catch (error) {
     if ((error as Error).name === 'FastifyError') throw error;
 
-    throw new InternalServerError((error as Error).message);
+    const message = (error as Error).message.includes('prisma')
+      ? 'erro no banco de dados'
+      : (error as Error).message;
+    throw new InternalServerError(message);
   }
 }
