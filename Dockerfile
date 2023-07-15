@@ -15,5 +15,5 @@ COPY packages/backend/package.json ./packages/backend/package.json
 COPY packages/frontend/package.json ./packages/frontend/package.json
 COPY prisma ./prisma
 RUN yarn install --production
-COPY --from=builder /app/build ./packages
-CMD yarn prisma migrate deploy; node packages/backend
+COPY --from=builder /app/build .
+CMD yarn prisma migrate deploy; node backend

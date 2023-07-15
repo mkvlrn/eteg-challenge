@@ -6,7 +6,7 @@ export default defineConfig({
   // @ts-expect-error, because of esm
   plugins: [react()],
   base: '',
-  resolve: { alias: { '#/frontend': resolve('.', '../../packages/frontend') } },
+  resolve: { alias: { '#/frontend': resolve('.', '.') } },
   server: {
     port: 3000,
     open: true,
